@@ -47,7 +47,8 @@
         <!-- define where to find integration rest tests -->
         <tests.ifNoTests>warn</tests.ifNoTests>
         <tests.rest.suite>nativescript</tests.rest.suite>
-        <tests.rest.load_packaged>false</tests.rest.load_packaged>
+	<tests.rest.load_packaged>false</tests.rest.load_packaged>
+	<maven.javadoc.skip>true</maven.javadoc.skip>
     </properties>
 
     <!-- needed for the snapshots of elasticsearch -->
