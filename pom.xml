@@ -7,13 +7,13 @@
     <parent>
         <groupId>org.elasticsearch.plugin</groupId>
         <artifactId>plugins</artifactId>
-        <version>2.4.5</version>
+        <version>2.4.4</version>
     </parent>
 
     <name>elasticsearch-native-script-example</name>
     <groupId>org.elasticsearch.plugin</groupId>
     <artifactId>elasticsearch-native-script-example</artifactId>
-    <version>2.4.5</version>
+    <version>2.4.4</version>
     <description>ElasticSearch Plugin with Native Script Examples</description>
     <inceptionYear>2013</inceptionYear>
 
@@ -38,18 +38,23 @@
 
     <properties>
         <!-- define class name for the descriptor file -->
-        <elasticsearch.plugin.classname>org.elasticsearch.examples.nativescript.plugin.NativeScriptExamplesPlugin</elasticsearch.plugin.classname>
+        <elasticsearch.plugin.classname>org.elasticsearch.examples.nativescript.plugin.NativeScriptExamplesPlugin
+        </elasticsearch.plugin.classname>
 
         <!-- we have custom licence header in this project -->
-        <elasticsearch.license.header>${project.basedir}/dev-tools/src/main/resources/license-check/native_script_example_license_header.txt</elasticsearch.license.header>
-        <elasticsearch.license.headerDefinition>${project.basedir}/dev-tools/src/main/resources/license-check/license_header_definition.xml</elasticsearch.license.headerDefinition>
+        <elasticsearch.license.header>
+            ${project.basedir}/dev-tools/src/main/resources/license-check/native_script_example_license_header.txt
+        </elasticsearch.license.header>
+        <elasticsearch.license.headerDefinition>
+            ${project.basedir}/dev-tools/src/main/resources/license-check/license_header_definition.xml
+        </elasticsearch.license.headerDefinition>
 
         <!-- define where to find integration rest tests -->
         <tests.ifNoTests>warn</tests.ifNoTests>
         <tests.rest.suite>nativescript</tests.rest.suite>
-	<tests.rest.load_packaged>false</tests.rest.load_packaged>
-	<maven.javadoc.skip>true</maven.javadoc.skip>
-	<no.commit.pattern>mdfskfjdt\b</no.commit.pattern>
+        <tests.rest.load_packaged>false</tests.rest.load_packaged>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+        <validate.skip>true</validate.skip>
     </properties>
 
     <!-- needed for the snapshots of elasticsearch -->
@@ -60,7 +65,6 @@
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </repository>
     </repositories>
-
     <build>
         <plugins>
             <plugin>
