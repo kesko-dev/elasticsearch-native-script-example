@@ -23,12 +23,9 @@ import org.elasticsearch.script.*;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 import org.elasticsearch.common.io.PathUtils;
-import org.elasticsearch.search.lookup.FieldLookup;
-import org.elasticsearch.search.lookup.IndexField;
 
 /**
  * Score a document based on user preferences
@@ -113,10 +110,7 @@ public class UserFeaturesLookupScript extends AbstractDoubleSearchScript {
             String indexfieldName = params == null ? null : XContentMapValues.nodeStringValue(params.get("index"), null);
             String userId = params == null ? null : XContentMapValues.nodeStringValue(params.get("user"), null);
 
-
-            //TODO userid
-
-            if (productFeaturesfieldName == null || indexfieldName == null) {
+            if (productFeaturesfieldName == null || indexfieldName == null || userId == null) {
                 throw new ScriptException("field and index and user parameters are required!");
             }
 
