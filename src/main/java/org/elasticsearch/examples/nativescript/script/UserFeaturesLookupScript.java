@@ -33,26 +33,6 @@ import org.elasticsearch.common.io.PathUtils;
 @SuppressForbidden(reason = "get path not configured in environment")
 public class UserFeaturesLookupScript extends AbstractDoubleSearchScript {
 
-    /*
-    public static Map<String, Integer> getUserMap(String eanMappingFileName) {
-        Map<String, Integer> eanMap = new HashMap<>();
-
-        try {
-            List<String> lines = Files.readAllLines(Paths.get(eanMappingFileName), Charset.forName("UTF-8"));
-
-            for(int i=0; i< lines.size(); i++) {
-                String line = lines.get(i);
-                String[] parts = line.split("\t");
-                String ean = parts[0];
-                eanMap.put(ean, i);
-            }
-        } catch (IOException e) {
-            throw new ScriptException("Could not load ean mappings:", e);
-        }
-        return eanMap;
-    }
-    */
-
     private static Float[] getUserFeatures(String line) {
         Scanner scanner = new Scanner(line);
         ArrayList<Float> floats = new ArrayList<>();
@@ -114,7 +94,7 @@ public class UserFeaturesLookupScript extends AbstractDoubleSearchScript {
                 throw new ScriptException("field and index and user parameters are required!");
             }
 
-            return new UserFeaturesLookupScript(productFeaturesfieldName, indexfieldName, userId);
+            return new UserFeaturesLookupScript(productFeaturesfieldName, userId);
         }
 
         /**
@@ -130,7 +110,7 @@ public class UserFeaturesLookupScript extends AbstractDoubleSearchScript {
     }
 
     private final String productFeaturesfieldName;
-    private final String indexfieldName;
+    //private final String indexfieldName;
     private final Integer userId;
 
     /**
@@ -138,9 +118,8 @@ public class UserFeaturesLookupScript extends AbstractDoubleSearchScript {
      *
      * @param productFeaturesfieldName the name of the field that should be checked
      */
-    private UserFeaturesLookupScript(String productFeaturesfieldName, String index, String userId) {
+    private UserFeaturesLookupScript(String productFeaturesfieldName, String userId) {
         this.productFeaturesfieldName = productFeaturesfieldName;
-        this.indexfieldName = index;
         this.userId = Integer.parseInt(userId);
     }
 
@@ -154,8 +133,8 @@ public class UserFeaturesLookupScript extends AbstractDoubleSearchScript {
             sum += productFeature.get(i) * userFeatures[userId][i];
         }
 
-        System.out.println(productFeature);
-        System.out.println(userFeatures[userId]);
+        //System.out.println(productFeature);
+        //System.out.println(userFeatures[userId]);
 
         return sum;
     }
